@@ -27,7 +27,7 @@ def classify_triangle(a: float, b: float, c: float) -> str:
 
     if is_equilateral(a, b, c):
         return 'Equilateral'
-    elif is_isoceles(a, b, c):
+    elif is_isosceles(a, b, c):
         return 'Isosceles'
     elif is_right(a, b, c):
         return 'Right'
@@ -50,7 +50,7 @@ def is_equilateral(a, b, c) -> bool:
     return False
 
 
-def is_isoceles(a, b, c) -> bool:
+def is_isosceles(a, b, c) -> bool:
     """ Returns true if two sides are equal """
     if a == b or b == c or c == a:
         return True
@@ -68,6 +68,7 @@ class Triangle(unittest.TestCase):
 
     # Test cases for triangles.
     def test(self):
+
         self.assertEqual(classify_triangle(3, 4, 5), 'Right', '3, 4, 5 is a Right triangle')
         self.assertEqual(classify_triangle(6, 9, 12), 'Scalene', '6, 9, 12 is a Scalene triangle')
         self.assertEqual(classify_triangle(6, 8, 10), 'Right', '6, 8, 10 is a Right triangle')
@@ -91,6 +92,5 @@ class Triangle(unittest.TestCase):
         self.assertRaises(ValueError, classify_triangle, 1, 'b', 3)
 
 
-# Calling the function calls from the main function.
 if __name__ == '__main__':
     unittest.main(exit=False, verbosity=2)
